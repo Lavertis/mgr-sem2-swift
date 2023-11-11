@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3F276D082AFA561600F7855D /* MemoGameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F276D072AFA561600F7855D /* MemoGameModel.swift */; };
+		3F276D0A2AFA607300F7855D /* MemoGameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F276D092AFA607300F7855D /* MemoGameViewModel.swift */; };
 		3FB712722AD566C10042377B /* MemoryGameApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB712712AD566C10042377B /* MemoryGameApp.swift */; };
 		3FB712742AD566C10042377B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB712732AD566C10042377B /* ContentView.swift */; };
 		3FB712762AD566C20042377B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3FB712752AD566C20042377B /* Assets.xcassets */; };
@@ -16,6 +18,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3F276D072AFA561600F7855D /* MemoGameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoGameModel.swift; sourceTree = "<group>"; };
+		3F276D092AFA607300F7855D /* MemoGameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoGameViewModel.swift; sourceTree = "<group>"; };
 		3FB7126E2AD566C10042377B /* MemoryGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MemoryGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3FB712712AD566C10042377B /* MemoryGameApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryGameApp.swift; sourceTree = "<group>"; };
 		3FB712732AD566C10042377B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -61,6 +65,8 @@
 				3FB712772AD566C20042377B /* Preview Content */,
 				F85104D82ADB4C1B00DE2D42 /* CardView.swift */,
 				F85104DC2ADB674C00DE2D42 /* ThemeButton.swift */,
+				3F276D072AFA561600F7855D /* MemoGameModel.swift */,
+				3F276D092AFA607300F7855D /* MemoGameViewModel.swift */,
 			);
 			path = MemoryGame;
 			sourceTree = "<group>";
@@ -143,7 +149,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3F276D082AFA561600F7855D /* MemoGameModel.swift in Sources */,
 				3FB712742AD566C10042377B /* ContentView.swift in Sources */,
+				3F276D0A2AFA607300F7855D /* MemoGameViewModel.swift in Sources */,
 				F85104DD2ADB674C00DE2D42 /* ThemeButton.swift in Sources */,
 				F85104D92ADB4C1B00DE2D42 /* CardView.swift in Sources */,
 				3FB712722AD566C10042377B /* MemoryGameApp.swift in Sources */,
