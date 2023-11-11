@@ -9,12 +9,16 @@ import Foundation
 import SwiftUI
 
 class MemoGameViewModel : ObservableObject {
-    private static let emojis = ["🍏", "🍎", "🍐", "🍊", "🕷️", "💀", "👻", "🐖", "🐨", "🐄"]
+    private static let emojis: [Color: [String]] = [
+        Color.orange: ["🍇", "🍈", "🥑", "🍉", "🍏", "🍐", "🍊", "🍎", "🍑", "🍑"],
+        Color.blue: ["🐻", "🐻‍❄️", "🐻‍❄️", "🐼", "🐶", "🦊", "🦁", "🐯", "🐵", "🙈"],
+        Color.red: ["🤣", "😂", "😇", "🥰", "😜", "😜", "🤠", "😈", "👻", "🤖"]
+    ]
     
-    private static func createMemoGame() -> MemoGameModel<String> {
+    private static func createMemoGame(color: Color = .orange) -> MemoGameModel<String> {
         return MemoGameModel<String>(numberOfPairsOfCards: 8) { index in
-            if emojis.indices.contains(index) {
-                return emojis[index]
+            if let themeEmojis = emojis[color], themeEmojis.indices.contains(index) {
+                return themeEmojis[index]
             }
             else {
                 return "??"
@@ -23,12 +27,11 @@ class MemoGameViewModel : ObservableObject {
     }
     
     @Published private var model = createMemoGame()
+    @Published var themeColor: Color = .orange
     
     var cards: Array<MemoGameModel<String>.Card> {
         return model.cards
     }
-    
-    @Published var themeColor: Color = .orange
     
     func shuffle() {
         model.shuffle()
@@ -40,5 +43,6 @@ class MemoGameViewModel : ObservableObject {
     
     func chooseTheme(color: Color) {
         themeColor = color
+        model = MemoGameViewModel.createMemoGame(color: color)
     }
 }
