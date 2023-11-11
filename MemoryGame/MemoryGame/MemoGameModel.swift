@@ -14,8 +14,8 @@ struct MemoGameModel<CardContent> where CardContent : Equatable {
         cards = []
         for pairIndex in 0..<max(2, numberOfPairsOfCards) {
             let content = cardContentFactory(pairIndex)
-            cards.append(Card(content: content, id: "\(pairIndex + 1)a"))
-            cards.append(Card(content: content, id: "\(pairIndex + 1)b"))
+            cards.append(Card(id: "\(pairIndex + 1)a", content: content))
+            cards.append(Card(id: "\(pairIndex + 1)b", content: content))
         }
     }
     
@@ -59,11 +59,10 @@ struct MemoGameModel<CardContent> where CardContent : Equatable {
     }
     
     struct Card: Equatable, Identifiable, CustomDebugStringConvertible {
+        var id: String
+        var content: CardContent
         var isFaceUp = false
         var isMatched = false
-        var content: CardContent
-        
-        var id: String
         
         var debugDescription: String {
             return "\(id): \(content) \(isFaceUp ? "up" : "down") \(isMatched ? "matched": "")"

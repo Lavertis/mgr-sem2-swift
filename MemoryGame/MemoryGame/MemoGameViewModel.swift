@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 class MemoGameViewModel : ObservableObject {
     private static let emojis = ["🍏", "🍎", "🍐", "🍊", "🕷️", "💀", "👻", "🐖", "🐨", "🐄"]
@@ -16,7 +17,7 @@ class MemoGameViewModel : ObservableObject {
                 return emojis[index]
             }
             else {
-                return "?!"
+                return "??"
             }
         }
     }
@@ -27,11 +28,17 @@ class MemoGameViewModel : ObservableObject {
         return model.cards
     }
     
+    @Published var themeColor: Color = .orange
+    
     func shuffle() {
         model.shuffle()
     }
     
     func choose(card: MemoGameModel<String>.Card) {
         model.choose(card)
+    }
+    
+    func chooseTheme(color: Color) {
+        themeColor = color
     }
 }

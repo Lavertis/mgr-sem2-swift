@@ -8,31 +8,34 @@
 import SwiftUI
 
 struct ThemeButton: View {
-    let icon: Image
+    @ObservedObject var viewModel: MemoGameViewModel
+    let image: Image
     let text: String
-    @Binding var isDisabled: Bool
-    @Binding var color: Color
-    @State var action: () -> ()
+    var color: Color
     
     var body: some View {
-        VStack {
-            icon.font(.title)
-            Text(text)
-        }
-        .disabled(isDisabled)
-        .font(.headline)
-        .foregroundColor(isDisabled ? .gray : color)
-        .onTapGesture(perform: isDisabled ? {} : action)
+        Button(action: {
+            viewModel.chooseTheme(color: color)
+        }, label: {
+            VStack {
+                image.font(.title)
+                Text(text)
+            }
+        })
+        .foregroundColor(isDisabled() ? .gray : viewModel.themeColor)
+        .disabled(isDisabled())
+    }
+    
+    func isDisabled() -> Bool {
+        return color == viewModel.themeColor
     }
 }
 
 #Preview {
-    @State var isDisabled = false
     return ThemeButton(
-        icon: Image(systemName: "heart"),
+        viewModel: MemoGameViewModel(),
+        image: Image(systemName: "heart"),
         text: "Theme 1",
-        isDisabled: $isDisabled,
-        color: .constant(.blue),
-        action: {}
+        color: .blue
     )
 }

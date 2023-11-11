@@ -10,6 +10,10 @@ import SwiftUI
 struct CardView: View {
     var card: MemoGameModel<String>.Card
     
+    init(_ card: MemoGameModel<String>.Card) {
+        self.card = card
+    }
+    
     var body: some View {
         ZStack {
             let base = RoundedRectangle(cornerRadius: 12)
@@ -22,35 +26,15 @@ struct CardView: View {
                     .aspectRatio(1, contentMode: .fit)
             }
 //            .opacity(card.isFaceUp ? 1 : 0)
-            base.fill().opacity(card.isFaceUp ? 0 : 1)
+            base
+                .fill()
+                .opacity(card.isFaceUp ? 0 : 1)
+                .animation(.easeInOut(duration: 0.5), value: card.isFaceUp)
         }
         .opacity(card.isFaceUp || !card.isMatched ? 1 : 0)
     }
-    
-    
-//    @State private var isFaceUp = false
-//    @State var content: String
-//    @Binding var color: Color
-//    
-//    var body: some View {
-//        let base = RoundedRectangle(cornerRadius: 12)
-//        ZStack {
-//            Group {
-//                base.fill(.white)
-//                base.strokeBorder(lineWidth: 3)
-//                Text(content).font(.largeTitle)
-//            }
-//            .opacity(isFaceUp ? 1 : 0)
-//            base.fill().opacity(isFaceUp ? 0 : 1)
-//        }
-//        .aspectRatio(2/3, contentMode: .fit)
-//        .foregroundColor(color)
-//        .onTapGesture {
-//            isFaceUp.toggle()
-//        }
-//    }
 }
 
 #Preview {
-    CardView(card: MemoGameModel<String>.Card(content: "🍎", id: "1"))
+    CardView(MemoGameModel<String>.Card(id: "1", content: "🍎"))
 }
