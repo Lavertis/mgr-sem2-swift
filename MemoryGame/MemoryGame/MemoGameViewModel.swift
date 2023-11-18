@@ -10,13 +10,16 @@ import SwiftUI
 
 class MemoGameViewModel : ObservableObject {
     private static let emojis: [Color: [String]] = [
-        Color.orange: ["🍇", "🍈", "🥑", "🍉", "🍏", "🍐", "🍊", "🍎", "🍑", "🍑"],
-        Color.blue: ["🐻", "🐻‍❄️", "🐻‍❄️", "🐼", "🐶", "🦊", "🦁", "🐯", "🐵", "🙈"],
-        Color.red: ["🤣", "😂", "😇", "🥰", "😜", "😜", "🤠", "😈", "👻", "🤖"]
+        Color.orange: ["🍇", "🍈", "🥑", "🍉", "🍏", "🍐", "🍊", "🍎"],
+        Color.blue: ["🐻", "🐻‍❄️", "🐼", "🐶", "🦊", "🦁", "🐯", "🐵", "🙈"],
+        Color.red: ["🤣", "😂", "😜", "🤠", "😈", "👻", "🤖"]
     ]
     
     private static func createMemoGame(color: Color = .orange) -> MemoGameModel<String> {
-        return MemoGameModel<String>(numberOfPairsOfCards: 8) { index in
+        guard let pairCount = emojis[color]?.count else {
+            fatalError("Emojis for color not found")
+        }
+        return MemoGameModel<String>(numberOfPairsOfCards: pairCount) { index in
             if let themeEmojis = emojis[color], themeEmojis.indices.contains(index) {
                 return themeEmojis[index]
             }
@@ -27,14 +30,16 @@ class MemoGameViewModel : ObservableObject {
     }
     
     @Published private var model = createMemoGame()
-    @Published var themeColor: Color = .orange
+    var themeColor: Color = .orange
     
     var cards: Array<MemoGameModel<String>.Card> {
         return model.cards
     }
     
     func shuffle() {
-        model.shuffle()
+        withAnimation {
+            model.shuffle()
+        }
     }
     
     func choose(card: MemoGameModel<String>.Card) {

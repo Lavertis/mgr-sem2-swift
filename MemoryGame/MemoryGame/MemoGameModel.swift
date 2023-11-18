@@ -45,33 +45,19 @@ struct MemoGameModel<CardContent> where CardContent : Equatable {
                     indexOfOneAndOnlyFaceUpCard = chosenIndex
                 }
                 cards[chosenIndex].isFaceUp = true
+                
+                // hide last cards
+                if cards.allSatisfy({ $0.isMatched }) {
+                    cards.indices.forEach { cards[$0].isFaceUp = false }
+                }
             }
         }
     }
     
-    private func index(of card: Card) -> Int? {
-        for index in cards.indices {
-            if cards[index].id == card.id {
-                return index
-            }
-        }
-        return nil
-    }
-    
-    struct Card: Equatable, Identifiable, CustomDebugStringConvertible {
+    struct Card: Equatable, Identifiable {
         var id: String
         var content: CardContent
         var isFaceUp = false
         var isMatched = false
-        
-        var debugDescription: String {
-            return "\(id): \(content) \(isFaceUp ? "up" : "down") \(isMatched ? "matched": "")"
-        }
-        
-        static func == (lhs: MemoGameModel<CardContent>.Card, rhs: MemoGameModel<CardContent>.Card) -> Bool {
-            return lhs.isFaceUp == rhs.isFaceUp &&
-            lhs.isMatched == rhs.isMatched &&
-            lhs.content == rhs.content
-        }
     }
 }
