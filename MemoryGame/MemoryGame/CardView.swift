@@ -19,24 +19,23 @@ struct CardView: View {
     }
     
     var body: some View {
-        ZStack {
-            let base = RoundedRectangle(cornerRadius: 12)
-            Group {
-                base.strokeBorder(lineWidth: 3)
+        CirclePart(endAngle: .degrees(240))
+            .opacity(0.5)
+            .overlay(
                 Text(card.content)
                     .font(.system(size: 200))
                     .minimumScaleFactor(0.01)
                     .aspectRatio(1, contentMode: .fit)
-            }
-            base
-                .opacity(card.isFaceUp ? 0 : 1)
-                .animation(.easeInOut(duration: 0.5), value: card.isFaceUp)
-        }
-        .opacity(isShown() ? 1 : 0)
-        .animation(.easeInOut(duration: 0.5), value: isShown())
+                    .rotationEffect(
+                        .degrees(card.isMatched ? 360 : 0)
+                    )
+            )
+            .padding(4)
+            .transformIntoCard(isFaceUp: card.isFaceUp)
+            .opacity(isShown() ? 1 : 0)
     }
 }
 
 #Preview {
-    CardView(MemoGameModel<String>.Card(id: "1", content: "🍎"))
+    CardView(MemoGameModel<String>.Card(id: "1", content: "🍎", isFaceUp: true))
 }
