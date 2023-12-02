@@ -21,7 +21,7 @@ struct TransformIntoCard: ViewModifier {
             base.fill()
                 .opacity(isFaceUp ? 0 : 1)
         }
-        .rotation3DEffect(.degrees(isFaceUp ? 0 : 180), axis: /*@START_MENU_TOKEN@*/(x: 0.0, y: 1.0, z: 0.0)/*@END_MENU_TOKEN@*/)
+        .rotation3DEffect(.degrees(isFaceUp ? 0 : 180), axis: (x: 0.0, y: 1.0, z: 0.0))
     }
 }
 

@@ -29,10 +29,12 @@ struct CardView: View {
                     .rotationEffect(
                         .degrees(card.isMatched ? 360 : 0)
                     )
+                    .animation(.spin(duration: 2), value: card.isMatched)
             )
             .padding(4)
             .transformIntoCard(isFaceUp: card.isFaceUp)
             .opacity(isShown() ? 1 : 0)
+            .animation(.easeInOut(duration: 0.5), value: card.isFaceUp)
     }
 }
 

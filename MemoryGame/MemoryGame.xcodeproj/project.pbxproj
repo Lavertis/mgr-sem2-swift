@@ -17,6 +17,7 @@
 		3FB712792AD566C20042377B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3FB712782AD566C20042377B /* Preview Assets.xcassets */; };
 		F85104D92ADB4C1B00DE2D42 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F85104D82ADB4C1B00DE2D42 /* CardView.swift */; };
 		F85104DD2ADB674C00DE2D42 /* ThemeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F85104DC2ADB674C00DE2D42 /* ThemeButton.swift */; };
+		F8CA64CE2B1AA8F8007D998C /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8CA64CD2B1AA8F8007D998C /* Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +32,7 @@
 		3FB712782AD566C20042377B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		F85104D82ADB4C1B00DE2D42 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		F85104DC2ADB674C00DE2D42 /* ThemeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeButton.swift; sourceTree = "<group>"; };
+		F8CA64CD2B1AA8F8007D998C /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +75,7 @@
 				3F276D092AFA607300F7855D /* MemoGameViewModel.swift */,
 				3FAE42C42B16073000705CCA /* CirclePart.swift */,
 				3FAE42C62B160F7C00705CCA /* TransformIntoCard.swift */,
+				F8CA64CD2B1AA8F8007D998C /* Extensions.swift */,
 			);
 			path = MemoryGame;
 			sourceTree = "<group>";
@@ -156,6 +159,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3F276D082AFA561600F7855D /* MemoGameModel.swift in Sources */,
+				F8CA64CE2B1AA8F8007D998C /* Extensions.swift in Sources */,
 				3FB712742AD566C10042377B /* ContentView.swift in Sources */,
 				3FAE42C72B160F7C00705CCA /* TransformIntoCard.swift in Sources */,
 				3FAE42C52B16073000705CCA /* CirclePart.swift in Sources */,
