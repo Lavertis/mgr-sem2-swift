@@ -8,8 +8,7 @@
 import SwiftUI
 
 extension Animation {
-    static func spin(duration: Double) -> Animation {
-        return Animation.linear(duration: duration)
-            .repeatForever(autoreverses: false)
+    static func spin(duration: TimeInterval) -> Animation {
+        return .linear(duration: duration).repeatForever(autoreverses: false)
     }
 }

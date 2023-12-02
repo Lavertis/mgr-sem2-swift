@@ -9,6 +9,7 @@ import SwiftUI
 
 
 struct ContentView: View {
+    typealias Card = MemoGameModel<String>.Card
     @ObservedObject var viewModel: MemoGameViewModel
     
     var body: some View {
@@ -36,11 +37,27 @@ struct ContentView: View {
                 CardView(card)
                     .aspectRatio(2/3, contentMode: .fit)
                     .padding(4)
-                    .onTapGesture {
-                        viewModel.choose(card: card)
-                    }
+                    .overlay(FlyingNumber(number: scoreChange(causedBy: card.id)))
+                    .onTapGesture { chooseCard(card) }
             }
         }.foregroundColor(viewModel.themeColor)
+    }
+    
+    private func chooseCard(_ card: Card) {
+        let scoreBeforeChoosing = viewModel.score
+        viewModel.choose(card: card)
+        let scoreChange = viewModel.score - scoreBeforeChoosing
+        lastScoreChange = (scoreChange, causedByCardId: card.id)
+    }
+    
+    @State private var lastScoreChange = (0, causedByCardId: "")
+    
+    private func scoreChange(causedBy cardId: Card.ID) -> Int {
+        if cardId == lastScoreChange.causedByCardId {
+            return lastScoreChange.0
+        } else {
+            return 0
+        }
     }
     
     var themeButtons: some View {
