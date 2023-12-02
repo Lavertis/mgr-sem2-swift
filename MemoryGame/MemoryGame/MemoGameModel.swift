@@ -9,6 +9,7 @@ import Foundation
 
 struct MemoGameModel<CardContent> where CardContent : Equatable {
     private(set) var cards: Array<Card>
+    private(set) var score = 0
     
     init(numberOfPairsOfCards: Int, cardContentFactory: (Int) -> CardContent) {
         cards = []
@@ -40,6 +41,14 @@ struct MemoGameModel<CardContent> where CardContent : Equatable {
                     if cards[chosenIndex].content == cards[potentialMatchedIndex].content {
                         cards[chosenIndex].isMatched = true
                         cards[potentialMatchedIndex].isMatched = true
+                        score += 4
+                    } else {
+                        if cards[chosenIndex].hasBeenSeen {
+                            score -= 1
+                        }
+                        if cards[potentialMatchedIndex].hasBeenSeen {
+                            score -= 1
+                        }
                     }
                 } else {
                     indexOfOneAndOnlyFaceUpCard = chosenIndex
@@ -57,7 +66,14 @@ struct MemoGameModel<CardContent> where CardContent : Equatable {
     struct Card: Equatable, Identifiable {
         var id: String
         var content: CardContent
-        var isFaceUp = false
+        var isFaceUp = false {
+            didSet {
+                if oldValue && !isFaceUp {
+                    hasBeenSeen = true
+                }
+            }
+        }
         var isMatched = false
+        var hasBeenSeen = false
     }
 }

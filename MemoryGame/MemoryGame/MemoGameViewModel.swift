@@ -30,14 +30,13 @@ class MemoGameViewModel : ObservableObject {
     }
     
     @Published private var model = createMemoGame()
-    var themeColor: Color = .orange
     
-    var cards: Array<MemoGameModel<String>.Card> {
-        return model.cards
-    }
+    var themeColor: Color = .orange
+    var cards: Array<MemoGameModel<String>.Card> { model.cards }
+    var score: Int { model.score }
     
     func shuffle() {
-        withAnimation {
+        withAnimation(.interactiveSpring(response: 1, dampingFraction: 0.5)) {
             model.shuffle()
         }
     }

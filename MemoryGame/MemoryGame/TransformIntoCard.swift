@@ -14,14 +14,17 @@ struct TransformIntoCard: ViewModifier {
         ZStack {
             let base = RoundedRectangle(cornerRadius: 12)
             base
-                .strokeBorder(lineWidth: 3)
+                .strokeBorder(lineWidth: 2)
                 .background(base.fill(.white))
                 .overlay(content)
                 .opacity(isFaceUp ? 1: 0)
             base.fill()
                 .opacity(isFaceUp ? 0 : 1)
         }
-        .rotation3DEffect(.degrees(isFaceUp ? 0 : 180), axis: (x: 0.0, y: 1.0, z: 0.0))
+        .rotation3DEffect(
+            .degrees(isFaceUp ? 0 : 180),
+            axis: /*@START_MENU_TOKEN@*/(x: 0.0, y: 1.0, z: 0.0)/*@END_MENU_TOKEN@*/
+        )
     }
 }
 

@@ -14,7 +14,17 @@ struct ContentView: View {
     var body: some View {
         VStack {
             ScrollView { cards }
-            Button("Shuffle") { viewModel.shuffle() }
+            HStack {
+                Text("Score: \(viewModel.score)")
+                Spacer()
+                Button("SHUFFLE") {
+                    viewModel.shuffle()
+                }
+                .font(.title3)
+            }
+            .font(.title)
+            .padding(.horizontal)
+            
             Spacer().frame(height: 30)
             themeButtons
         }

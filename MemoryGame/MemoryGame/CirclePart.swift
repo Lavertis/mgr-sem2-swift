@@ -11,7 +11,7 @@ import CoreGraphics
 struct CirclePart : Shape {
     var startAngle: Angle = .zero
     let endAngle: Angle
-    let clockwise: Bool = false
+    let clockwise: Bool = true
     
     func path(in rect: CGRect) -> Path {
         let startAngle = startAngle - .degrees(90)
@@ -32,7 +32,7 @@ struct CirclePart : Shape {
             radius: radius, 
             startAngle: startAngle,
             endAngle: endAngle,
-            clockwise: clockwise
+            clockwise: !clockwise
         )
         p.addLine(to: center)
         
