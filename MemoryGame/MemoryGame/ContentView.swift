@@ -37,7 +37,7 @@ struct ContentView: View {
                 CardView(card)
                     .aspectRatio(2/3, contentMode: .fit)
                     .padding(4)
-                    .overlay(FlyingNumber(number: scoreChange(causedBy: card.id)))
+                    .overlay(FlyingNumber(number: scoreChange(cardId: card.id)))
                     .onTapGesture { chooseCard(card) }
             }
         }.foregroundColor(viewModel.themeColor)
@@ -50,11 +50,11 @@ struct ContentView: View {
         lastScoreChange = (scoreChange, causedByCardId: card.id)
     }
     
-    @State private var lastScoreChange = (0, causedByCardId: "")
+    @State private var lastScoreChange = (amount: 0, causedByCardId: "")
     
-    private func scoreChange(causedBy cardId: Card.ID) -> Int {
+    private func scoreChange(cardId: Card.ID) -> Int {
         if cardId == lastScoreChange.causedByCardId {
-            return lastScoreChange.0
+            return lastScoreChange.amount
         } else {
             return 0
         }

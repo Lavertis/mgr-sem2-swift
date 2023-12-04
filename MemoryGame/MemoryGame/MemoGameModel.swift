@@ -15,8 +15,8 @@ struct MemoGameModel<CardContent> where CardContent : Equatable {
         cards = []
         for pairIndex in 0..<max(2, numberOfPairsOfCards) {
             let content = cardContentFactory(pairIndex)
-            cards.append(Card(id: "\(pairIndex + 1)a", content: content))
-            cards.append(Card(id: "\(pairIndex + 1)b", content: content))
+            cards.append(Card(id: "\(UUID())_a", content: content))
+            cards.append(Card(id: "\(UUID())_b", content: content))
         }
     }
     
