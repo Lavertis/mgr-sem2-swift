@@ -17,10 +17,10 @@ struct FlyingNumber: View {
                 .font(.largeTitle)
                 .foregroundColor(number < 0 ? .red : .blue)
                 .shadow(color: .black, radius: 2, x: 1, y: 1)
-                .offset(x: 0, y: offset)
+                .offset(y: offset)
                 .opacity(offset == 0 ? 1 : 0)
                 .onAppear {
-                    withAnimation(.easeIn(duration: 1.5)) {
+                    withAnimation(.linear(duration: 1.5)) {
                         offset = number < 0 ? 100 : -100
                     }
                 }

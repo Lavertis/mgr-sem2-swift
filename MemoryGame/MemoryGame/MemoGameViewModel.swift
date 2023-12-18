@@ -36,7 +36,7 @@ class MemoGameViewModel : ObservableObject {
     var score: Int { model.score }
     
     func shuffle() {
-        withAnimation(.interactiveSpring(response: 1, dampingFraction: 0.5)) {
+        withAnimation {
             model.shuffle()
         }
     }

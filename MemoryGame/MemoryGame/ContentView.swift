@@ -47,7 +47,7 @@ struct ContentView: View {
         let scoreBeforeChoosing = viewModel.score
         viewModel.choose(card: card)
         let scoreChange = viewModel.score - scoreBeforeChoosing
-        lastScoreChange = (scoreChange, causedByCardId: card.id)
+        lastScoreChange = (amount: scoreChange, causedByCardId: card.id)
     }
     
     @State private var lastScoreChange = (amount: 0, causedByCardId: "")
